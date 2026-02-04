@@ -4,101 +4,40 @@
 # Lab 2 - Representing Systems of equations as matrices
 # 2026-02-04
 
-# 1 Basics of NumPy ----
+# 1 Representing system of linear equations using matrices ----
 
-one_dimensional_array <- array(c(10, 12))
-print(one_dimensional_array)
+A <- matrix(data = c(-1, 3, 3, 2), ncol = 2, byrow = TRUE)
+A
 
-a <- array(c(1, 2, 3))
-print(a)
+B <- array(c(7, 1))
+B
 
-b <- seq(3)
-b
+solve(A, B)
 
-c <- seq(1, 20, 3)
-c
+det(A)
 
-lin_spaced_arr <- seq(0, 100, length.out = 5)
-lin_spaced_arr
+# 2 Visualising 2x2 systems as plotlines ----
 
-char_arr <- array("Welcome to Math for ML!")
-print(char_arr)
-typeof(char_arr)
+A_system <- cbind(A, B)
 
-ones_arr <- array(1, dim = 3)
-print(ones_arr)
+matplot(A, B, type = "l")
 
-zeros_arr <- array(0, 3)
-print(zeros_arr)
+# 3 System of linear equations with no solutions ----
 
-empt_arr <- array(dim = 3)
-print(empt_arr)
+A_2 <- matrix(c(-1, 3, 3, -9), ncol = 2, byrow = TRUE)
+B_2 <- array(c(7, 1))
 
-rand_arr <- array(runif(3))
-print(rand_arr)
+det(A_2)
 
-# 2 Multidimensional arrays ----
+solve(A_2, B_2)
 
-two_dim_arr <- array(c(c(1, 2, 3), c(4, 5, 6)), dim = c(2, 3))
-print(two_dim_arr)
+# 4 System of linear equations with an infinite number of solutions ----
 
-one_dim_arr <- array(c(1, 2, 3, 4, 5, 6))
-print(one_dim_arr)
+A_3 <- matrix(c(-1, 3, 3, -9), ncol = 2, byrow = TRUE)
+B_3 <- array(c(7, -21))
 
-multi_dim_arr <- array(one_dim_arr, dim = c(2, 3))
+det(A_3, B_3)
 
-dim(multi_dim_arr)
-length(multi_dim_arr)
+solve(A_3, B_3)
 
-# 3 Array math operations ----
-
-arr_1 <- array(c(2, 4, 6))
-arr_2 <- array(c(1, 3, 5))
-
-print(arr_1)
-print(arr_2)
-
-addition <- arr_1 + arr_2
-print(addition)
-
-subtraction <- arr_1 - arr_2
-print(subtraction)
-
-multiplication <- arr_1 * arr_2
-print(multiplication)
-
-vector <- array(c(1, 2))
-print(vector)
-vector * 1.6
-
-# 4 Indexing and slicing ----
-
-a <- c(1, 2, 3, 4, 5)
-a[2]
-
-two_dim <- array(c(c(1, 4, 7), c(2, 5, 8), c(3, 6, 9)), dim = c(3, 3))
-two_dim
-
-two_dim[2, 1]
-
-a[1:4]
-
-a[1:3]
-
-a[3:5]
-
-a[c(1, 3, 5)]
-
-two_dim[1:2, ]
-
-two_dim[2:3, ]
-
-a1 <- list(c(1, 2), c(2, 2))
-a2 <- list(c(3, 3), c(4, 4))
-
-a1
-a2
-c(a1)
-
-array(0, 3)
-array(dim = 3)
+matplot(A_3, B_3, type = "l")
